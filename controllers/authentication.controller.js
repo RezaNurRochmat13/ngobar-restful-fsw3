@@ -8,7 +8,7 @@ const register = async (request, response) => {
   await User.create({
     name: request.body.name,
     email: request.body.email,
-    password: passwordUtil.encrypt(request.body.password)
+    password: await passwordUtil.encrypt(request.body.password)
   })
 
   return response.status(201).json({ message: 'User registered successfully.' })
